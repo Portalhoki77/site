@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  background: #000;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  text-align: center;
+  padding: 24px 10px;
+  color: #fff;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+
+.game-card {
+  background: #121212;
+  border-radius: 18px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,.4);
+}
+
+.game-card img {
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.game-card h3 {
+  color: #fff;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.btn-play {
+  display: block;
+  width: 100%;
+  background: linear-gradient(135deg,#2cff6b,#00d84a);
+  color: #000;
+  padding: 12px 0;
+  border-radius: 30px;
+  font-weight: 700;
+  text-decoration: none;
+}
