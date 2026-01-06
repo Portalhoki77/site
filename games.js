@@ -1,7 +1,5 @@
 
 const games = [
-{name:"Bantu Admin",domain:"bantuads.com",link:"#"},
-{name:"Spin Reward",domain:"spinreward.com",link:"#"},
 {name:"8768D",domain:"h5.8768f.com",link:"https://h5.8768f.com/?id=NTQ2MDQzMzcz"},
 {name:"KakRp",domain:"kakrp.com",link:"#"},
 {name:"INA777",domain:"h5.in858.win",link:"https://h5.in858.win/?id=MTcxMDQ5NTI="},
