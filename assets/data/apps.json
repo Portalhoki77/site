@@ -1,0 +1,10 @@
+[
+  {
+    "id": "1",
+    "category": "hiwin",
+    "name": "Contoh App",
+    "url": "contoh.com",
+    "icon": "assets/images/default-icon.png",
+    "click": 0
+  }
+]
