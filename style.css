@@ -7,7 +7,7 @@ body{background:#0b1320;color:#fff;font-family:Arial,sans-serif}
 .game-card{background:#111a2c;border-radius:12px;padding:12px;display:flex;align-items:center;gap:12px}
 .game-card img{width:60px;height:60px;border-radius:10px}
 .game-info h3{font-size:14px;margin-bottom:6px}
-.btn-play{display:inline-block;background:#1eff4e;color:#000;padding:6px 14px;border-radius:20px;font-size:12px;text-decoration:none;font-weight:bold}
+.btn-play{display:inline-block;background:#1eff4e;color:#000;padding:4px 12px;border-radius:18px;font-size:10px;text-decoration:none;font-weight:bold}
 .footer{text-align:center;padding:20px;color:#aaa;font-size:12px}
 .footer-image img{max-width:100%}
 @media(min-width:768px){.game-grid{grid-template-columns:repeat(4,1fr)}}
