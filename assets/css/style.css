@@ -1,7 +1,0 @@
-body{font-family:Inter,Arial,sans-serif;background:#0b1220;color:#fff;margin:0}
-.topbar{padding:16px;background:#111827}
-.nav a{margin:6px;color:#9ca3af;text-decoration:none}
-.nav a.active{color:#22c55e}
-.apps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;padding:12px}
-.card{background:#111827;border-radius:12px;padding:12px;color:#fff;text-decoration:none}
-.icon-wrap img{width:48px;height:48px;border-radius:8px}
