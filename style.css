@@ -1,0 +1,6 @@
+body{margin:0;font-family:Arial;background:#0b1220;color:#fff}
+.container{padding:16px}
+.game-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.game-card{background:#0f1722;border-radius:16px;padding:16px;display:flex;gap:12px;align-items:center}
+.game-card img{width:64px;height:64px}
+.btn-play{display:inline-block;padding:10px 18px;background:#32ff5e;color:#000;font-weight:600;border-radius:999px;text-decoration:none}
