@@ -32,7 +32,7 @@ body{
 .hero img{
   max-width:320px;   /* 🔥 LOGO LEBIH BESAR */
   width:100%;
-  height:auto;
+  height:50px;
   display:block;
   margin:0 auto 10px;
 }
