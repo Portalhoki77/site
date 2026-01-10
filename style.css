@@ -13,21 +13,20 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* HERO / HEADER */
-.hero {
-  background-color: #0b1320;
-  text-align: center;
-  padding: 20px;
+/* ===== HEADER / LOGO ===== */
+.hero{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:14px 10px;   /* DIPERKECIL */
+  background:transparent;
 }
 
-/* LOGO */
-.site-logo {
-  max-width: 100%;
-  height: auto;
-  background: transparent;
-  display: block;
-  margin: 0 auto;
-}
+.site-logo{
+  max-width:180px;    /* KUNCI UKURAN LOGO */
+  width:100%;
+  height:auto;
+  display:block;
 
 /* CONTAINER */
 .container {
