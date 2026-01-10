@@ -1,38 +1,30 @@
-/* RESET */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* BODY */
-html,
 body {
-  background-color: #0b1320;
+  background: #0b1320;
   color: #fff;
   font-family: Arial, sans-serif;
 }
 
-/* ===== HEADER / LOGO ===== */
-.hero{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:14px 10px;   /* DIPERKECIL */
-  background:transparent;
+/* HERO / LOGO */
+.hero {
+  padding: 20px;
+  text-align: center;
 }
 
-.site-logo{
-  max-width:180px;    /* KUNCI UKURAN LOGO */
-  width:100%;
-  height:auto;
-  display:block;
+.site-logo {
+  max-width: 220px;   /* ⬅️ LOGO TIDAK KEBESARAN */
+  width: 100%;
+  height: auto;
 }
 
-/* CONTAINER */
+/* CONTENT */
 .container {
   padding: 20px;
-  background-color: #0b1320;
 }
 
 /* GRID */
@@ -44,50 +36,35 @@ body {
 
 /* CARD */
 .game-card {
-  background-color: #111a2c;
-  border-radius: 12px;
+  background: #111a2c;
+  border-radius: 14px;
   padding: 12px;
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* ICON */
 .game-card img {
   width: 60px;
   height: 60px;
-  border-radius: 10px;
+  border-radius: 12px;
+  object-fit: cover;
 }
 
-/* INFO */
 .game-info h3 {
   font-size: 14px;
   margin-bottom: 6px;
 }
 
-/* BUTTON */
 .btn-play {
   display: inline-block;
   background: #1eff4e;
   color: #000;
-  padding: 3px 8px;
+  padding: 4px 10px;
   border-radius: 12px;
-  font-size: 9px;
-  text-decoration: none;
+  font-size: 10px;
   font-weight: bold;
-}
-
-/* FOOTER */
-.footer {
-  background-color: #0b1320;
-  text-align: center;
-  padding: 20px;
-  color: #aaa;
-  font-size: 12px;
-}
-
-.footer-image img {
-  max-width: 100%;
+  text-decoration: none;
 }
 
 /* DESKTOP */
