@@ -134,11 +134,18 @@
 </footer>
 
 <script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/site/sw.js');
-  });
-}
+(function () {
+  const isStandalone =
+    window.matchMedia('(display-mode: standalone)').matches ||
+    window.navigator.standalone === true;
+
+  if (!isStandalone) {
+    // Paksa parameter PWA agar Chrome treat sebagai app candidate
+    if (!location.search.includes('mode=pwa')) {
+      location.replace('/site/?mode=pwa');
+    }
+  }
+})();
 </script>
 
 </body>
