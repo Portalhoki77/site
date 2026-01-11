@@ -57,6 +57,8 @@ body{
   background: rgba(11,19,32,0.96);
   padding: 8px 12px;     /* ⬅ LEBIH RINGKAS */
   border-radius: 12px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .hero h1{
@@ -67,6 +69,8 @@ body{
 
 .hero .subtitle{
   font-size: 12px;
+  text-align: center;
+  width: 100%;
 }
 
 .hero.shrink img{
