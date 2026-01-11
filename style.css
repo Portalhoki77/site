@@ -30,9 +30,9 @@ body{
 
 /* LOGO BESAR & RESPONSIVE */
 .hero img{
-  max-width:320px;   /* 🔥 LOGO LEBIH BESAR */
+  max-width:340px;   /* 🔥 LOGO LEBIH BESAR */
   width:100%;
-  height:100px;
+  height:auto;
   display:block;
   margin:0 auto 10px;
 }
