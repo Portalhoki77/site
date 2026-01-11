@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -137,6 +136,14 @@
   <img src="img/footer-true-transparent.webp" alt="Portalhoki77 Footer Logo" loading="lazy">
   <p>© 2026 Portalhoki77. All Rights Reserved.</p>
 </footer>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/site/sw.js');
+  });
+}
+</script>
 
 </body>
 </html>
