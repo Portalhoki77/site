@@ -31,11 +31,7 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
-        })
+        keys.map((key) => key !== CACHE_NAME && caches.delete(key))
       )
     )
   );
@@ -61,7 +57,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Images → cache on demand (runtime cache)
+  // Images (including OG image) → runtime cache
   if (event.request.destination === 'image') {
     event.respondWith(
       caches.open(CACHE_NAME).then((cache) =>
@@ -77,6 +73,5 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Default
   event.respondWith(fetch(event.request));
 });
