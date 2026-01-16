@@ -1,9 +1,74 @@
-self.addEventListener('install', e => {
+/* ===============================
+   Portalhoki77 Service Worker
+   FINAL • CLEAN • SAFE
+================================ */
+
+const CACHE_NAME = 'portalhoki77-v1';
+
+const ASSETS_TO_CACHE = [
+  '/',
+  '/index.html',
+  '/style.css',
+  '/manifest.json',
+  '/favicon.ico',
+
+  // images
+  '/img/',
+
+  // fallback
+];
+
+// ===============================
+// INSTALL
+// ===============================
+self.addEventListener('install', (event) => {
   self.skipWaiting();
+
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(ASSETS_TO_CACHE);
+    })
+  );
 });
 
-self.addEventListener('fetch', e => {
-  e.respondWith(
-    fetch(e.request).catch(() => caches.match('/index.html'))
+// ===============================
+// ACTIVATE
+// ===============================
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(
+        keys.map((key) => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        })
+      )
+    )
+  );
+
+  self.clients.claim();
+});
+
+// ===============================
+// FETCH
+// ===============================
+self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') return;
+
+  event.respondWith(
+    fetch(event.request)
+      .then((response) => {
+        const responseClone = response.clone();
+
+        caches.open(CACHE_NAME).then((cache) => {
+          cache.put(event.request, responseClone);
+        });
+
+        return response;
+      })
+      .catch(() =>
+        caches.match(event.request).then((res) => res || caches.match('/index.html'))
+      )
   );
 });
