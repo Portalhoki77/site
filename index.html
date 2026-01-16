@@ -14,7 +14,7 @@
   <!-- ================================================= -->
   <!-- SEO & PWA SUPPORT -->
   <!-- ================================================= -->
-  <link rel="canonical" href="https://portalhoki77.github.io/site/">
+  <link rel="canonical" href="https://portalhoki77.fun">
   <link rel="manifest" href="/site/manifest.json">
 
   <meta name="theme-color" content="#0b1320">
@@ -28,7 +28,7 @@
 
   <script>
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js');
+  navigator.serviceWorker.register('/site/service-worker.js');
 }
   </script>
   
@@ -328,7 +328,7 @@ if ('serviceWorker' in navigator) {
     
     
         <article class="game-card">
-      <img src="img/games/gamerp.png" alt="gamerp"">
+      <img src="img/games/gamerp.png" alt="gamerp">
       <div class="game-info">
         <h3>Gamerp</h3>
         <a href="https://h5.gamerp11.win/?id=MTk1NTg4NTM4" class="btn-play" target="_blank" rel="noopener">Mulai Bermain</a>
@@ -487,7 +487,7 @@ if ('serviceWorker' in navigator) {
      
     
         <article class="game-card">
-      <img src="img/games/svip5.png" alt="s ip5">
+      <img src="img/games/svip5.png" alt="svip5">
       <div class="game-info">
         <h3>Svip5</h3>
         <a href="https://h5.svip5web.com/?id=ODk0NTMyMzg5" class="btn-play" target="_blank" rel="noopener">Mulai Bermain</a>
@@ -513,20 +513,6 @@ if ('serviceWorker' in navigator) {
 <!-- ================================================= -->
 <!-- SCRIPT PWA -->
 <!-- ================================================= -->
-<script>
-(function () {
-  const isStandalone =
-    window.matchMedia('(display-mode: standalone)').matches ||
-    window.navigator.standalone === true;
-
-  if (!isStandalone) {
-    // Paksa parameter PWA agar Chrome membaca sebagai app
-    if (!location.search.includes('mode=pwa')) {
-      location.replace('/site/?mode=pwa');
-    }
-  }
-})();
-</script>
 
 </body>
   </html>
