@@ -513,6 +513,16 @@ if ('serviceWorker' in navigator) {
 <!-- SCRIPT PWA -->
 <!-- ================================================= -->
 
+  <script>
+if (
+  window.matchMedia('(display-mode: standalone)').matches ||
+  window.navigator.standalone === true
+) {
+  document.body.classList.add('pwa-mode');
+}
+  </script>
+  
+
 </body>
   </html>
   
