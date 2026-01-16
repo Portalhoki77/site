@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://portalhoki77.fun/sitemap.xml
