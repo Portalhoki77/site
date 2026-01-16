@@ -1,21 +1,21 @@
 /* ===============================
    Portalhoki77 Service Worker
-   FINAL • CLEAN • SAFE
+   FIXED for GitHub Pages (/site)
 ================================ */
 
-const CACHE_NAME = 'portalhoki77-v1';
+const CACHE_NAME = 'portalhoki77-v2';
+const BASE_PATH = '/site';
 
 const ASSETS_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/manifest.json',
-  '/favicon.ico',
+  `${BASE_PATH}/`,
+  `${BASE_PATH}/index.html`,
+  `${BASE_PATH}/style.css`,
+  `${BASE_PATH}/manifest.json`,
+  `${BASE_PATH}/favicon.ico`,
 
-  // images
-  '/img/',
-
-  // fallback
+  // cache folder image (file harus dipanggil langsung)
+  `${BASE_PATH}/img/logo.png`,
+  `${BASE_PATH}/img/banner.webp`,
 ];
 
 // ===============================
@@ -23,11 +23,8 @@ const ASSETS_TO_CACHE = [
 // ===============================
 self.addEventListener('install', (event) => {
   self.skipWaiting();
-
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE);
-    })
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE))
   );
 });
 
@@ -38,15 +35,10 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
-        })
+        keys.map((key) => key !== CACHE_NAME && caches.delete(key))
       )
     )
   );
-
   self.clients.claim();
 });
 
@@ -57,18 +49,18 @@ self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
   event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        const responseClone = response.clone();
+    caches.match(event.request).then((cached) => {
+      if (cached) return cached;
 
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseClone);
-        });
-
-        return response;
-      })
-      .catch(() =>
-        caches.match(event.request).then((res) => res || caches.match('/index.html'))
-      )
+      return fetch(event.request)
+        .then((response) => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, clone);
+          });
+          return response;
+        })
+        .catch(() => caches.match(`${BASE_PATH}/index.html`));
+    })
   );
 });
