@@ -1,41 +1,41 @@
 /* ===============================
    Portalhoki77 Service Worker
-   FIXED for GitHub Pages (/site)
+   SAFEST VERSION (PRODUCTION)
 ================================ */
 
-const CACHE_NAME = 'portalhoki77-v2';
+const CACHE_NAME = 'portalhoki77-core-v1';
 const BASE_PATH = '/site';
 
-const ASSETS_TO_CACHE = [
-  `${BASE_PATH}/`,
-  `${BASE_PATH}/index.html`,
-  `${BASE_PATH}/style.css`,
-  `${BASE_PATH}/manifest.json`,
-  `${BASE_PATH}/favicon.ico`,
-
-  // cache folder image (file harus dipanggil langsung)
-  `${BASE_PATH}/img/logo.png`,
-  `${BASE_PATH}/img/banner.webp`,
-];
-
 // ===============================
-// INSTALL
+// INSTALL — cache CORE ONLY
 // ===============================
 self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE))
+    caches.open(CACHE_NAME).then((cache) =>
+      cache.addAll([
+        `${BASE_PATH}/`,
+        `${BASE_PATH}/index.html`,
+        `${BASE_PATH}/style.css`,
+        `${BASE_PATH}/manifest.json`,
+        `${BASE_PATH}/favicon.ico`,
+      ])
+    )
   );
 });
 
 // ===============================
-// ACTIVATE
+// ACTIVATE — clean old cache
 // ===============================
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(
-        keys.map((key) => key !== CACHE_NAME && caches.delete(key))
+        keys.map((key) => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        })
       )
     )
   );
@@ -43,24 +43,40 @@ self.addEventListener('activate', (event) => {
 });
 
 // ===============================
-// FETCH
+// FETCH — smart & safe
 // ===============================
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) return cached;
+  // HTML & CSS → network first
+  if (
+    event.request.destination === 'document' ||
+    event.request.destination === 'style'
+  ) {
+    event.respondWith(
+      fetch(event.request).catch(() =>
+        caches.match(`${BASE_PATH}/index.html`)
+      )
+    );
+    return;
+  }
 
-      return fetch(event.request)
-        .then((response) => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, clone);
-          });
-          return response;
-        })
-        .catch(() => caches.match(`${BASE_PATH}/index.html`));
-    })
-  );
+  // Images → cache on demand (runtime cache)
+  if (event.request.destination === 'image') {
+    event.respondWith(
+      caches.open(CACHE_NAME).then((cache) =>
+        cache.match(event.request).then((cached) =>
+          cached ||
+          fetch(event.request).then((response) => {
+            cache.put(event.request, response.clone());
+            return response;
+          })
+        )
+      )
+    );
+    return;
+  }
+
+  // Default
+  event.respondWith(fetch(event.request));
 });
