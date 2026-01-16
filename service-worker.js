@@ -4,7 +4,7 @@
 ================================ */
 
 const CACHE_NAME = 'portalhoki77-core-v1';
-const BASE_PATH = '/site';
+const BASE_PATH = '/';
 
 // ===============================
 // INSTALL — cache CORE ONLY
