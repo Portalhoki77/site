@@ -1,8 +1,8 @@
 {
   "name": "Portalhoki77",
   "short_name": "Portalhoki77",
-  "start_url": "/?mode=pwa",
-  "scope": "/",
+  "start_url": "/site/",
+  "scope": "/site/",
   "display": "standalone",
   "background_color": "#0b1320",
   "theme_color": "#0b1320",
